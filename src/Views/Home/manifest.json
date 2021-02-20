@@ -1,0 +1,20 @@
+{
+    "short_name": "Gaming Online",
+    "name": "Online Gaming Hosted by AbhieShinde",
+    "icons": [
+      {
+        "src": "logo.png",
+        "type": "image/png",
+        "sizes": "452x452"
+      },
+      {
+        "src": "logo.jpg",
+        "type": "image/png",
+        "sizes": "400x400"
+      }
+    ],
+    "start_url": ".",
+    "display": "standalone",
+    "theme_color": "#000000",
+    "background_color": "#ffffff"
+  }

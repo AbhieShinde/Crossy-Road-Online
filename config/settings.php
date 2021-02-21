@@ -8,6 +8,7 @@ return static function(string $appEnv) {
     $settings =  [
         'app_env' => $appEnv,
         'di_compilation_path' => __DIR__ . '/../var/cache',
+        'cache' => __DIR__ . '/../var/cache',
         'display_error_details' => false,
         'log_errors' => true,
 
@@ -20,6 +21,7 @@ return static function(string $appEnv) {
 
     if ($appEnv === 'DEVELOPMENT') {
         // Overrides for development mode
+        $settings['cache'] = false;
         $settings['di_compilation_path'] = '';
         $settings['display_error_details'] = true;
         $settings['logger']['path'] = __DIR__ . '/../var/log/app.log';

@@ -8,6 +8,7 @@ use Monolog\Logger;
 use Monolog\Processor\UidProcessor;
 use Psr\Container\ContainerInterface;
 use Psr\Log\LoggerInterface;
+use Slim\Views\Twig;
 
 return static function (ContainerBuilder $containerBuilder, array $settings) {
     $containerBuilder->addDefinitions([
@@ -26,6 +27,14 @@ return static function (ContainerBuilder $containerBuilder, array $settings) {
             $logger->pushHandler($handler);
 
             return $logger;
+        },
+
+        Twig::class => function (ContainerInterface $c) {
+            $settings = $c->get('settings');
+
+            $view = \Slim\Views\Twig::create(__DIR__ . '/../src/Views', ['cache'=>$settings['cache']]);
+          
+            return $view;
         },
     ]);
 };

@@ -1,12 +1,10 @@
 <?php
-
 declare(strict_types=1);
 
-use App\Handler\HomePageHandler;
-use App\Handler\CrossyRoadHandler;
-use Slim\App;
-
-return function (App $app) {
-    $app->get('/crossy-road', CrossyRoadHandler::class)->setName('crossy-road');
-    $app->get('/[{name}]', HomePageHandler::class)->setName('home');
+return function (Slim\App $app) {
+    $app->get('/crossy-road', \App\Handlers\CrossyRoadHandler::class)->setName('crossy-road');
+    $app->get('/spacebar-tower', \App\Handlers\SpacebarTowerHandler::class)->setName('spacebar-tower');
+    $app->get('/ping-pong', \App\Handlers\PingPongHandler::class)->setName('ping-pong');
+    $app->get('/', \App\Handlers\HomePageHandler::class)->setName('home');
+    $app->redirect('/{name}', '/');
 };
